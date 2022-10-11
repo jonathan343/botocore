@@ -1056,7 +1056,14 @@ class TestHandlers(BaseSessionTest):
 
     def test_set_operation_specific_signer_s3v4_unsigned_payload(self):
         signing_name = 's3'
-        context = {'auth_type': 'v4-unsigned-body'}
+        context = {
+            'auth_type': 'v4-unsigned-body',
+            'signing': {
+                'foo': 'bar',
+                'region': 'abc',
+                'disableDoubleEncoding': True,
+            },
+        }
         response = handlers.set_operation_specific_signer(
             context=context, signing_name=signing_name
         )
@@ -1069,7 +1076,10 @@ class TestHandlers(BaseSessionTest):
 )
 def test_set_operation_specific_signer_s3v4(auth_type, expected_response):
     signing_name = 's3'
-    context = {'auth_type': auth_type}
+    context = {
+        'auth_type': auth_type,
+        'signing': {'disableDoubleEncoding': True},
+    }
     response = handlers.set_operation_specific_signer(
         context=context, signing_name=signing_name
     )
@@ -1205,14 +1215,18 @@ class TestSSEMD5(BaseMD5Test):
                 'SSECustomerKey': b'bar',
                 'SSECustomerAlgorithm': 'AES256',
             }
-            self.session.emit(event, params=params, model=mock.MagicMock())
+            self.session.emit(
+                event, params=params, model=mock.MagicMock(), context={}
+            )
             self.assertEqual(params['SSECustomerKey'], 'YmFy')
             self.assertEqual(params['SSECustomerKeyMD5'], 'Zm9v')
 
     def test_sse_params_as_str(self):
         event = 'before-parameter-build.s3.PutObject'
         params = {'SSECustomerKey': 'bar', 'SSECustomerAlgorithm': 'AES256'}
-        self.session.emit(event, params=params, model=mock.MagicMock())
+        self.session.emit(
+            event, params=params, model=mock.MagicMock(), context={}
+        )
         self.assertEqual(params['SSECustomerKey'], 'YmFy')
         self.assertEqual(params['SSECustomerKeyMD5'], 'Zm9v')
 
@@ -1223,7 +1237,9 @@ class TestSSEMD5(BaseMD5Test):
                 'CopySourceSSECustomerKey': b'bar',
                 'CopySourceSSECustomerAlgorithm': 'AES256',
             }
-            self.session.emit(event, params=params, model=mock.MagicMock())
+            self.session.emit(
+                event, params=params, model=mock.MagicMock(), context={}
+            )
             self.assertEqual(params['CopySourceSSECustomerKey'], 'YmFy')
             self.assertEqual(params['CopySourceSSECustomerKeyMD5'], 'Zm9v')
 
@@ -1233,7 +1249,9 @@ class TestSSEMD5(BaseMD5Test):
             'CopySourceSSECustomerKey': 'bar',
             'CopySourceSSECustomerAlgorithm': 'AES256',
         }
-        self.session.emit(event, params=params, model=mock.MagicMock())
+        self.session.emit(
+            event, params=params, model=mock.MagicMock(), context={}
+        )
         self.assertEqual(params['CopySourceSSECustomerKey'], 'YmFy')
         self.assertEqual(params['CopySourceSSECustomerKeyMD5'], 'Zm9v')
 
