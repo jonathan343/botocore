@@ -45,8 +45,8 @@ BOTO_FORCE_ENDPOINT_RESOLUTION_V2 = ensure_boolean(
 
 
 def add_mocks_for_endpoint_loader(mock_list):
-    # Adds a None value after list item to account for
-    # new calls to load endpoint-rule-set which we dont want to mock
+    # Adds a None value after each item in a list to ignore mocks for new calls
+    # to load_service_model which are related to endpoint-rule-set
     if BOTO_FORCE_ENDPOINT_RESOLUTION_V2:
         result = [None] * (len(mock_list) * 2)
         result[0::2] = mock_list
