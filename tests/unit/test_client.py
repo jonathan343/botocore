@@ -40,7 +40,7 @@ from botocore.utils import ensure_boolean
 from tests import mock, unittest
 
 BOTO_FORCE_ENDPOINT_RESOLUTION_V2 = ensure_boolean(
-    os.environ.get('BOTO_FORCE_ENDPOINT_RESOLUTION_V2', True)
+    os.environ.get('BOTO_FORCE_ENDPOINT_RESOLUTION_V2', False)
 )
 
 
