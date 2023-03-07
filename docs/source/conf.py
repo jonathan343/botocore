@@ -134,9 +134,9 @@ html_css_files = [
 ]
 
 # List of custom JS files relative to _static directory.
-# html_js_files = [
-#     'js/custom.js',
-# ]
+html_js_files = [
+    'js/custom.js',
+]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
