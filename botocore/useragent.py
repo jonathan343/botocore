@@ -245,7 +245,7 @@ class UserAgentString:
         cp._client_config = client_config
         return cp
 
-    def to_string(self):
+    def to_string(self, component_injector=None):
         """
         Build User-Agent header string from the object's properties.
         """
@@ -271,6 +271,11 @@ class UserAgentString:
             *self._build_app_id(),
             *self._build_extra(),
         ]
+
+        # If a component injector function is provided, apply it to the components list.
+        if callable(component_injector):
+            components = component_injector(components)
+
         return ' '.join([comp.to_string() for comp in components])
 
     def _build_sdk_metadata(self):
@@ -488,3 +493,8 @@ def _get_crt_version():
         return awscrt.__version__
     except AttributeError:
         return None
+
+try:
+    from botocore.customizations.useragent import UserAgentString
+except ImportError:
+    pass
