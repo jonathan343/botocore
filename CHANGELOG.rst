@@ -2,6 +2,21 @@
 CHANGELOG
 =========
 
+1.34.24
+=======
+
+* api-change:``cloud9``: Update cloud9 client to latest version
+* api-change:``organizations``: Update organizations client to latest version
+* api-change:``finspace``: Update finspace client to latest version
+* api-change:``endpoint-rules``: Update endpoint-rules client to latest version
+* api-change:``rds``: Update rds client to latest version
+* api-change:``ec2``: Update ec2 client to latest version
+* api-change:``connectcases``: Update connectcases client to latest version
+* api-change:``appconfigdata``: Update appconfigdata client to latest version
+* api-change:``cloudfront-keyvaluestore``: Update cloudfront-keyvaluestore client to latest version
+* api-change:``ecs``: Update ecs client to latest version
+
+
 1.34.23
 =======
 

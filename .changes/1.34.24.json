@@ -1,0 +1,52 @@
+[
+  {
+    "category": "``cloud9``",
+    "description": "Update cloud9 client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``organizations``",
+    "description": "Update organizations client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``finspace``",
+    "description": "Update finspace client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``endpoint-rules``",
+    "description": "Update endpoint-rules client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``rds``",
+    "description": "Update rds client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``ec2``",
+    "description": "Update ec2 client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``connectcases``",
+    "description": "Update connectcases client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``appconfigdata``",
+    "description": "Update appconfigdata client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``cloudfront-keyvaluestore``",
+    "description": "Update cloudfront-keyvaluestore client to latest version",
+    "type": "api-change"
+  },
+  {
+    "category": "``ecs``",
+    "description": "Update ecs client to latest version",
+    "type": "api-change"
+  }
+]
