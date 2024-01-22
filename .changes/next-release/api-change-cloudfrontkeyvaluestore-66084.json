@@ -1,5 +1,0 @@
-{
-  "type": "api-change",
-  "category": "``cloudfront-keyvaluestore``",
-  "description": "Update cloudfront-keyvaluestore client to latest version"
-}
