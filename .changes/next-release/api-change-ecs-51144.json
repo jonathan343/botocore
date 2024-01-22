@@ -1,0 +1,5 @@
+{
+  "type": "api-change",
+  "category": "``ecs``",
+  "description": "Update ecs client to latest version"
+}

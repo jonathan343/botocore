@@ -1,0 +1,5 @@
+{
+  "type": "api-change",
+  "category": "``cloud9``",
+  "description": "Update cloud9 client to latest version"
+}
