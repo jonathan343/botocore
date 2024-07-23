@@ -114,3 +114,8 @@ More Resources
 * `NOTICE <https://github.com/boto/botocore/blob/develop/NOTICE>`__
 * `Changelog <https://github.com/boto/botocore/blob/develop/CHANGELOG.rst>`__
 * `License <https://github.com/boto/botocore/blob/develop/LICENSE.txt>`__
+
+Test
+--------------
+
+This is a fake change for testing an OOB release.
