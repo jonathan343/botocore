@@ -104,13 +104,6 @@ with open(PROTOCOL_TEST_IGNORE_LIST_PATH) as f:
     PROTOCOL_TEST_IGNORE_LIST = json.load(f)
 
 
-@pytest.fixture
-def mock_env(monkeypatch):
-    # Smithy-generated protocol test's expect strings to be UTF-8 encoded.
-    # Python doesn't default to UTF-8 on Windows, so we need to manually set.
-    monkeypatch.setenv("PYTHONUTF8", "1")
-
-
 class TestType(Enum):
     # Tell test runner to ignore this class
     __test__ = False
@@ -524,7 +517,9 @@ def _load_cases(full_path):
     # The format is BOTOCORE_TEST_ID=suite_id:test_id or
     # BOTOCORE_TEST_ID=suite_id
     suite_id, test_id = _get_suite_test_id()
-    all_test_data = json.load(open(full_path), object_pairs_hook=OrderedDict)
+    all_test_data = json.load(
+        open(full_path, encoding='utf-8'), object_pairs_hook=OrderedDict
+    )
     basename = os.path.basename(full_path)
     for i, test_data in enumerate(all_test_data):
         if suite_id is not None and i != suite_id:
