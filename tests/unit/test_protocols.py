@@ -104,6 +104,13 @@ with open(PROTOCOL_TEST_IGNORE_LIST_PATH) as f:
     PROTOCOL_TEST_IGNORE_LIST = json.load(f)
 
 
+@pytest.fixture
+def mock_env(monkeypatch):
+    # Smithy-generated protocol test's expect strings to be UTF-8 encoded.
+    # Python doesn't default to UTF-8 on Windows, so we need to manually set.
+    monkeypatch.setenv("PYTHONUTF8", "1")
+
+
 class TestType(Enum):
     # Tell test runner to ignore this class
     __test__ = False
